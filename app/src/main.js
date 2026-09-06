@@ -286,10 +286,22 @@ addEventListener('hashchange', () => {
   if (text && text !== plan?.text) build(text);
 });
 
+// A public handle, so the build can be driven from the console or a script
+// rather than only by typing into the field.
+window.syntaxis = {
+  build,
+  reader,
+  player,
+  renderer,
+  get plan() { return plan; },
+  frames: 0,
+};
+
 const clock = new THREE.Clock();
 renderer.setAnimationLoop(() => {
   const dt = Math.min(clock.getDelta(), 0.05);
   const elapsed = clock.elapsedTime;
+  window.syntaxis.frames += 1;
   player.update(dt, renderer.xr.getSession());
   reader.update(dt, elapsed);
   sky.position.copy(player.rig.position);

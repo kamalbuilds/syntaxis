@@ -53,7 +53,11 @@ export default class Player {
   }
 
   requestLock() {
-    this.dom.requestPointerLock?.();
+    // Chrome returns a promise here, and it rejects when the call did not come
+    // from a real user gesture. Swallowing it keeps a denied lock from
+    // surfacing as an unhandled rejection.
+    const pending = this.dom.requestPointerLock?.();
+    if (pending && typeof pending.catch === 'function') pending.catch(() => {});
   }
 
   setWorld({ colliders, sample }) {

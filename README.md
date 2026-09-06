@@ -97,3 +97,14 @@ run on a headset.
 ## Licence
 
 MIT.
+
+## Scripting it
+
+The page exposes `window.syntaxis` with `build(sentence)`, the current `plan`, the
+`reader`, the `player` and the `renderer`, so a build can be driven from the console
+or a script rather than only by typing into the field.
+
+```js
+syntaxis.build('a bright lamp hangs above the black water');
+syntaxis.plan.rooms.map(r => [r.word, r.relation, r.position]);
+```

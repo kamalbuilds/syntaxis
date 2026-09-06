@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Syntaxis — a sentence you can walk through</title>
+    <meta name="description" content="Type an English sentence and walk through its grammar as architecture. Browser-native, WebXR-enterable, no model in the loop." />
+    <meta property="og:title" content="Syntaxis — a sentence you can walk through" />
+    <meta property="og:description" content="Subjects become rooms, verbs become topology, prepositions become real spatial relations. Three.js + WebXR." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314140f'/%3E%3Cpath d='M6 24V10h6v6h8v-6h6v14' stroke='%23c86a3a' stroke-width='2.4' fill='none'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="stage"></canvas>
+
+    <div id="veil">
+      <div class="veil-inner">
+        <p class="eyebrow">Three.js · WebXR · no model in the loop</p>
+        <h1>Syntaxis</h1>
+        <p class="lede">
+          An English sentence is parsed into a dependency tree, and the tree is
+          built as a place. Subjects and objects become rooms. The verb decides
+          the topology of the ground between them. Prepositions are not labels
+          here: <em>on</em> stacks, <em>under</em> sinks, <em>through</em> bores
+          a hole, <em>around</em> raises a colonnade.
+        </p>
+        <button id="enter" type="button">Enter the sentence</button>
+        <p class="fine">WASD or arrows to walk · mouse to look · Shift to run · Space to rise · Esc to release the cursor</p>
+      </div>
+    </div>
+
+    <header id="brand">
+      <span class="mark">SYNTAXIS</span>
+      <span class="sub">grammar, built</span>
+    </header>
+
+    <aside id="readout" aria-live="polite">
+      <div class="row head"><span>PARSE</span><button id="toggle-readout" type="button">hide</button></div>
+      <div id="tokens" class="tokens"></div>
+      <div class="row head"><span>PLAN</span></div>
+      <dl id="plan"></dl>
+      <div id="unknown" class="unknown"></div>
+    </aside>
+
+    <div id="caption"></div>
+
+    <form id="composer" autocomplete="off">
+      <input
+        id="sentence"
+        type="text"
+        maxlength="140"
+        spellcheck="false"
+        placeholder="the old library sinks under a black river"
+      />
+      <button type="submit">Build</button>
+    </form>
+
+    <nav id="examples"></nav>
+
+    <div id="tools">
+      <button id="share" type="button">Copy link</button>
+      <span id="vr-slot"></span>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

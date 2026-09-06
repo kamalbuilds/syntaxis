@@ -197,7 +197,7 @@ function build(sentence) {
     ),
     8,
   );
-  const standoff = THREE.MathUtils.clamp(reach * 1.7 + 6, 16, 72);
+  const standoff = THREE.MathUtils.clamp(reach * 1.45 + 6, 16, 66);
 
   // Some topologies cut a chasm through the middle of the site, so a fixed
   // +Z standoff can drop the viewer into it. Try a ring of vantage points and
@@ -214,7 +214,13 @@ function build(sentence) {
   }
   player.teleport(best.x, best.z);
   player.yaw = Math.atan2(-(centre.x - best.x), -(centre.z - best.z));
-  player.pitch = 0.02;
+
+  // Aim at the middle of the build rather than the horizon, so the opening shot
+  // is not half empty ground.
+  const midY = plan.rooms.length
+    ? plan.rooms.reduce((sum, r) => sum + r.position[1] + r.size[1] * 0.5, 0) / plan.rooms.length
+    : 2;
+  player.pitch = THREE.MathUtils.clamp(Math.atan2(midY - 1.68, standoff), -0.25, 0.5);
 
   reader.load(world.waypoints, plan.scene.agentSpeed);
 

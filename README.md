@@ -10,7 +10,7 @@ overhead, `through` bores a real opening and runs a tunnel into it, `inside` gro
 a container until the figure genuinely fits within it, `around` raises a ring whose
 radius is computed from how many members it has to hold.
 
-Live: https://syntaxis.vercel.app
+Live: https://syntaxis-grammar.vercel.app
 
 No model is called at any point. The parser, the lexicon and the architecture
 grammar are the whole system, which is why a permalink still renders the same
